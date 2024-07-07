@@ -1,3 +1,5 @@
+code
+```js
 chrome.management.getAll(function(extensions) {
   var options = [];
   extensions.forEach(function(extension) {
@@ -26,3 +28,4 @@ chrome.management.getAll(function(extensions) {
     alert('Invalid choice');
   }
 });
+```
