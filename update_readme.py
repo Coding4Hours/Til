@@ -28,13 +28,10 @@ for topic, rows in by_topic.items():
 if index[-1] == "":
     index.pop()
 index.append("<!-- index ends -->")
-if "--rewrite" in sys.argv:
-    readme = root / "README.md"
-    index_txt = "\n".join(index).strip()
-    readme_contents = readme.open().read()
-    rewritten = index_re.sub(index_txt, readme_contents)
-    rewritten = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewritten)
-    print(rewritten)
-    readme.open("w").write(rewritten)    
-else:
-    print("\n".join(index))
+readme = root / "README.md"
+index_txt = "\n".join(index).strip()
+readme_contents = readme.open().read()
+rewritten = index_re.sub(index_txt, readme_contents)
+rewritten = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewritten)
+print(rewritten)
+readme.open("w").write(rewritten)    
