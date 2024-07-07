@@ -22,12 +22,9 @@ for topic, rows in by_topic.items():
     index.append("## {}\n".format(topic))
     for row in rows:
         date = row["created"].split("T")[0]
-        with open("q", "w") as file:
-            json_string = json.dumps(row)
-            file.write(json_string + "\n")
-        #index.append(
-            #f"* [{title}]" ({url:{urllib.parse.quote.__name__}('')}) - {date}"
-        #)
+        index.append(
+            f"* [{row["title"]}]" ({url:{urllib.parse.quote(row["url"])}) - {date}"
+        )
     index.append("")
 if index[-1] == "":
     index.pop()
