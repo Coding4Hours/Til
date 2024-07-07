@@ -23,7 +23,7 @@ for topic, rows in by_topic.items():
     for row in rows:
         date = row["created"].split("T")[0]
         index.append(
-            f"* [{row["title"]}]" ({url:{urllib.parse.quote(row["url"])}) - {date}"
+            f"* [{row['title']}]({urllib.parse.quote(row['url'])}) - {date}"
         )
     index.append("")
 if index[-1] == "":
