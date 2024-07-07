@@ -1,3 +1,5 @@
+code
+```js
 chrome.management.getAll(function(extensions) {
   extensionList.innerHTML = '';
   extensions.forEach(function(extension) {
@@ -8,3 +10,4 @@ chrome.management.getAll(function(extensions) {
     }
   });
 });
+```
