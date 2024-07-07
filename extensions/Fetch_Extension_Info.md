@@ -1,4 +1,4 @@
-code
+Fetches all Extension Info
 ```js
 chrome.management.getAll(function(extensions) {
   var extensionInfo = extensions.map(function(ext) {
