@@ -4,6 +4,9 @@ import sqlite_utils
 import sys
 import re
 
+def generate_markdown_link(title, url, date):
+    return f"[{title}]({url}) - {date}"
+
 root = pathlib.Path(__file__).parent.resolve()
 
 index_re = re.compile(r"<!\-\- index starts \-\->.*<!\-\- index ends \-\->", re.DOTALL)
@@ -19,6 +22,7 @@ index = ["<!-- index starts -->"]
 for topic, rows in by_topic.items():
     index.append("## {}\n".format(topic))
     for row in rows:
+        url = generate_markdown_link(url)
         index.append(
             "* [{title}]({url}) - {date}".format(
                 date=row["created"].split("T")[0], **row
