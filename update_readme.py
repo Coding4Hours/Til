@@ -21,7 +21,8 @@ for topic, rows in by_topic.items():
     index.append("## {}\n".format(topic))
     for row in rows:
         date = row["created"].split("T")[0]
-        open("q", "w").write(**rows)
+        with open("q", "w") as file:
+            file.write(row + "\n")
         #index.append(
             #f"* [{title}]" ({url:{urllib.parse.quote.__name__}('')}) - {date}"
         #)
