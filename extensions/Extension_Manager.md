@@ -1,4 +1,4 @@
-code
+Extension Manager
 ```js
 chrome.management.getAll(function(extensions) {
   var options = [];
