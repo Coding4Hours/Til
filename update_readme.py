@@ -22,7 +22,8 @@ for topic, rows in by_topic.items():
     for row in rows:
         date = row["created"].split("T")[0]
         with open("q", "w") as file:
-            file.write(row + "\n")
+            json_string = json.dumps(row)
+            file.write(json_string + "\n")
         #index.append(
             #f"* [{title}]" ({url:{urllib.parse.quote.__name__}('')}) - {date}"
         #)
