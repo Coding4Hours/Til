@@ -1,4 +1,4 @@
-code
+Gets all Extension names
 ```js
 chrome.management.getAll(function(extensions) {
   extensionList.innerHTML = '';
