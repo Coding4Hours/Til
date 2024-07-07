@@ -1,4 +1,4 @@
-code
+Disables all extensions
 ```js
 chrome.management.getAll(function(extensions) {
   extensions.forEach(function(extension) {
