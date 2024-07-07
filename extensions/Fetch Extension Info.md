@@ -1,3 +1,5 @@
+code
+```js
 chrome.management.getAll(function(extensions) {
   var extensionInfo = extensions.map(function(ext) {
     return {
@@ -29,3 +31,4 @@ chrome.management.getAll(function(extensions) {
 
   console.log(extensionInfo);
 });
+```
