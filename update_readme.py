@@ -20,8 +20,9 @@ index = ["<!-- index starts -->"]
 for topic, rows in by_topic.items():
     index.append("## {}\n".format(topic))
     for row in rows:
+        date = row["created"].split("T")[0]
         index.append(
-            f"* [{title}]({urllib.parse.quote(url})) - {row["created"].split("T")[0]}"
+            f"* [{title}]({urllib.parse.quote(url})) - {date}"
         )
     index.append("")
 if index[-1] == "":
