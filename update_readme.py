@@ -22,8 +22,9 @@ for topic, rows in by_topic.items():
     index.append("## {}\n".format(topic))
     for row in rows:
         date = row["created"].split("T")[0]
+        url = "https://" + urllib.parse.quote(row['url'].replace("https://"))
         index.append(
-            f"* [{row['title']}]({urllib.parse.quote(row['url'])}) - {date}"
+            f"* [{row['title']}]({url}) - {date}"
         )
     index.append("")
 if index[-1] == "":
