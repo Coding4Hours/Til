@@ -19,12 +19,12 @@ def detect_duplicates():
 
     # GraphQL query to get the issue title and search for similar issues
     query = """
-    query($owner: String!, $name: String!, $number: Int!, $query: String!) {
+    query($owner: String!, $name: String!, $number: Int!) {
       repository(owner: $owner, name: $name) {
         issue(number: $number) {
           title
         }
-        issues(first: 100, query: $query) {
+        issues(first: 100, states: OPEN) {
           nodes {
             number
             title
@@ -37,8 +37,7 @@ def detect_duplicates():
     variables = {
         "owner": repo_owner,
         "name": repo_name,
-        "number": issue_number,
-        "query": "is:issue"
+        "number": issue_number
     }
 
     result = run_query(query, variables)
