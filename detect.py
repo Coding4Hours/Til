@@ -1,8 +1,8 @@
 import os
 from github import Github
+import re
 
 def detect_duplicates():
-    # Authentication for user filing issue (must have read/write access to repository to add labels)
     token = os.environ.get('GITHUB_TOKEN')
     repo_name = os.environ.get('REPO_NAME')
     issue_number = int(os.environ.get('ISSUE_NUMBER'))
@@ -11,34 +11,41 @@ def detect_duplicates():
         print("Error: Missing required environment variables.")
         return
 
-    # Create a Github instance
     g = Github(token)
 
     try:
-        # Get the repository
         repo = g.get_repo(repo_name)
-
-        # Get the issue
         issue = repo.get_issue(number=issue_number)
 
-        # Search for potential duplicates
-        query = f'is:issue repo:{repo_name} {issue.title}'
-        potential_duplicates = g.search_issues(query)
+        # Extract keywords from the issue title
+        keywords = extract_keywords(issue.title)
 
-        # Filter out the current issue and limit to top 5 results
-        duplicates = [i for i in potential_duplicates if i.number != issue_number][:5]
+        # Search for potential duplicates using keywords
+        query = f'is:issue repo:{repo_name} ' + ' OR '.join(keywords)
+        print(f"Search query: {query}")
+
+        potential_duplicates = g.search_issues(query)
+        print(f"Total results found: {potential_duplicates.totalCount}")
+
+        # Filter and score duplicates
+        duplicates = []
+        for i in potential_duplicates:
+            if i.number != issue_number:
+                score = calculate_similarity(issue.title, i.title)
+                if score > 0.5:  # Adjust this threshold as needed
+                    duplicates.append((i, score))
+
+        # Sort duplicates by similarity score and take top 5
+        duplicates.sort(key=lambda x: x[1], reverse=True)
+        duplicates = duplicates[:5]
 
         if duplicates:
-            # Create a comment with links to potential duplicates
             comment = "This issue might be a duplicate. Please check these similar issues:\n\n"
-            for dup in duplicates:
-                comment += f"- #{dup.number}: {dup.title}\n"
+            for dup, score in duplicates:
+                comment += f"- #{dup.number}: {dup.title} (Similarity: {score:.2f})\n"
             comment += "\nIf this is indeed a duplicate, please close this issue. If not, please provide more details on how this issue differs."
             
-            # Add the comment to the issue
             issue.create_comment(comment)
-            
-            # Add a 'potential-duplicate' label
             issue.add_to_labels('potential-duplicate')
             
             print(f"Potential duplicates found for issue #{issue_number}. Comment added and label applied.")
@@ -48,5 +55,19 @@ def detect_duplicates():
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
-if __name__ == "__main__":
-    detect_duplicates()
+def extract_keywords(title):
+    # Convert to lowercase and remove punctuation
+    title = re.sub(r'[^\w\s]', '', title.lower())
+    words = title.split()
+    # Include individual words and pairs of consecutive words
+    keywords = words + [' '.join(words[i:i+2]) for i in range(len(words)-1)]
+    return list(set(keywords))  # Remove duplicates
+
+def calculate_similarity(title1, title2):
+    words1 = set(extract_keywords(title1))
+    words2 = set(extract_keywords(title2))
+    intersection = words1.intersection(words2)
+    union = words1.union(words2)
+    return len(intersection) / len(union)
+
+detect_duplicates()
