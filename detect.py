@@ -46,7 +46,7 @@ def detect_duplicates():
             comment += "\nIf this is indeed a duplicate, please close this issue. If not, please provide more details on how this issue differs."
             
             issue.create_comment(comment)
-            issue.add_to_labels('potential-duplicate')
+            issue.add_to_labels('duplicate')
             
             print(f"Potential duplicates found for issue #{issue_number}. Comment added and label applied.")
         else:
