@@ -1,0 +1,72 @@
+name: Detect Duplicate Issues
+
+on:
+  issues:
+    types: [opened, reopened]
+
+jobs:
+  find_duplicates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install PyGithub
+
+      - name: Run duplicate detection script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_NAME: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          python .github/scripts/detect_duplicates.py
+
+      - name: Create detect_duplicates.py
+        run: |
+          cat << EOF > .github/scripts/detect_duplicates.py
+          import os
+          from github import Github
+
+          # Authentication for user filing issue (must have read/write access to repository to add labels)
+          token = os.environ['GITHUB_TOKEN']
+          repo_name = os.environ['REPO_NAME']
+          issue_number = int(os.environ['ISSUE_NUMBER'])
+
+          # Create a Github instance:
+          g = Github(token)
+
+          # Get the repository
+          repo = g.get_repo(repo_name)
+
+          # Get the issue
+          issue = repo.get_issue(number=issue_number)
+
+          # Search for potential duplicates
+          query = f'is:issue repo:{repo_name} {issue.title}'
+          potential_duplicates = g.search_issues(query)
+
+          # Filter out the current issue and limit to top 5 results
+          duplicates = [i for i in potential_duplicates if i.number != issue_number][:5]
+
+          if duplicates:
+              # Create a comment with links to potential duplicates
+              comment = "This issue might be a duplicate. Please check these similar issues:\n\n"
+              for dup in duplicates:
+                  comment += f"- #{dup.number}: {dup.title}\n"
+              comment += "\nIf this is indeed a duplicate, please close this issue. If not, please provide more details on how this issue differs."
+              
+              # Add the comment to the issue
+              issue.create_comment(comment)
+              
+              # Add a 'potential-duplicate' label
+              issue.add_to_labels('potential-duplicate')
+
+          EOF
