@@ -33,8 +33,15 @@ def build_database(repo_path):
     table = db.table("til", pk="path")
     for filepath in root.glob("*/*.md"):
         with filepath.open() as fp:
-            title = fp.readline().lstrip("#").strip()
-            body = fp.read().strip()
+            # Read all lines of the file
+            lines = fp.readlines()
+            # Get the fifth line as the title
+            if len(lines) >= 5:
+                title = lines[4].lstrip("#").strip()
+            else:
+                title = ""
+            # Read the rest of the file as the body
+            body = "".join(lines[5:]).strip()
         path = str(filepath.relative_to(root))
         url = f"https://coding4hours.github.io/Til/" + urllib.parse.quote(path.replace(" ", "-").replace(".md", ""))
         record = {
