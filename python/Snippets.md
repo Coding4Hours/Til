@@ -30,3 +30,5 @@ s = f'pi is {pi:.2f}'
 # pi is 3.14
 ```
 
+
+Have fun: [https://readcache.xyz/api/p?url=https://levelup.gitconnected.com/30-python-concepts-i-wish-i-knew-way-earlier-3add72af6433](https://readcache.xyz/api/p?url=https://levelup.gitconnected.com/30-python-concepts-i-wish-i-knew-way-earlier-3add72af6433)
