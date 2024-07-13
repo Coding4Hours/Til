@@ -2,7 +2,7 @@
 
 Today-I-Learned snippets. Inspired by the post [Building a self-updating profile README for GitHub](https://simonwillison.net/2020/Jul/10/self-updating-profile-readme/) by [Simon Willison](https://github.com/simonw) 
 
-<!-- count starts -->12<!-- count ends --> TILs so far. 
+<!-- count starts -->13<!-- count ends --> TILs so far. 
 <!-- index starts -->
 ## Extensions
 
@@ -21,4 +21,8 @@ Today-I-Learned snippets. Inspired by the post [Building a self-updating profile
 * [CHeck this out](https://coding4hours.github.io/Til/python/Check-This-Out) - 2024-07-13
 * [This is python stuff](https://coding4hours.github.io/Til/python/index) - 2024-07-13
 * [BEST IDE??](https://coding4hours.github.io/Til/python/BEST-IDE) - 2024-07-13
+
+## other
+
+* [](https://coding4hours.github.io/Til/other/Check-this-out) - 2024-07-13
 <!-- index ends -->
