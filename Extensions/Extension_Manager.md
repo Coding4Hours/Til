@@ -1,3 +1,7 @@
+---
+layout: default
+title: Python
+---
 Extension Manager
 ```js
 chrome.management.getAll(function(extensions) {
