@@ -16,9 +16,9 @@ Today-I-Learned snippets. Inspired by the post [Building a self-updating profile
 
 ## python
 
-* [BEST IDE??](https://coding4hours.github.io/Til/python/BEST-IDE%3F%3F) - 2024-07-11
 * [Snippets](https://coding4hours.github.io/Til/python/Snippets) - 2024-07-11
 * [GUYS!!](https://coding4hours.github.io/Til/python/GUYS) - 2024-07-13
 * [CHeck this out](https://coding4hours.github.io/Til/python/Check-This-Out) - 2024-07-13
 * [This is python stuff](https://coding4hours.github.io/Til/python/index) - 2024-07-13
+* [BEST IDE??](https://coding4hours.github.io/Til/python/BEST-IDE) - 2024-07-13
 <!-- index ends -->
