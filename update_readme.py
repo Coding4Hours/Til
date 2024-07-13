@@ -36,6 +36,8 @@ for topic, rows in by_topic.items():
         file_name = os.path.basename(path)
 
         if file_name != "index.md":
+            with open(f"{directory_path}/index.md", "w") as file:
+                file.write("---\nlayout: default\ntitle: Python\n---\nThis is python stuff")
             with open(f"{directory_path}/index.md", "a") as file:
                 file.write(f"\n<br>* [{row['title']}](https://coding4hours.github.io/Til/{directory_path}/{file_name}) - {date}")
         
