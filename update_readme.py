@@ -3,6 +3,7 @@ import pathlib
 import sqlite_utils
 import sys
 import re
+import os
 import urllib.parse
 from urllib.parse import urlparse
 import json
