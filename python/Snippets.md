@@ -1,3 +1,7 @@
+---
+layout: default
+title: Python
+---
 # Snippets
 
 ## F-Strings!!
