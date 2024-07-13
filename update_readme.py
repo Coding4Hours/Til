@@ -28,8 +28,6 @@ for topic, rows in by_topic.items():
         url = "https://" + urllib.parse.quote(row['url'].replace("https://", ""))
         path = row['url'].replace("https://github.com/Coding4Hours/Til/tree/master/", "") 
         
-        if row['title'] == '---':
-            continue
         index.append(
             f"* [{row['title']}]({url}) - {date}"
         )
