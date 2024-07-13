@@ -36,6 +36,8 @@ def build_database(repo_path):
             body = fp.read().strip()
         path = str(filepath.relative_to(root))
         url = f"https://github.com/Coding4Hours/til/blob/master/{path}"
+        if title == '---':
+            pass
         record = {
             "path": path.replace("/", "_"),
             "topic": path.split("/")[0],
