@@ -7,6 +7,7 @@ import os
 import urllib.parse
 from urllib.parse import urlparse
 import json
+from pathlib import Path
 
 root = pathlib.Path(__file__).parent.resolve()
 
