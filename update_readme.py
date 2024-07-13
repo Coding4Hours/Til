@@ -36,7 +36,7 @@ for topic, rows in by_topic.items():
 
         if file_name != "index.md":
             with open(f"{directory_path}/index.md", "a") as file:
-                file.write(f"https://coding4hours.github.io/Til/{directory_path}/{file_name}")
+                file.write(f"\nhttps://coding4hours.github.io/Til/{directory_path}/{file_name}")
         index.append(
             f"* [{row['title']}]({url}) - {date}"
         )
