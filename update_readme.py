@@ -42,10 +42,10 @@ for topic, rows in by_topic.items():
             readmee = Path(f"{directory_path}").parent.resolve()
             readmee = readmee / "index.md"
             index2_txt = "\n".join(index).strip()
-            readme_contents = readme.open().read()
-            rewritten = index_re.sub(index_txt, readme_contents)
-            rewritten = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewritten)
-            readmee.open("w").write(rewritten)
+            readmee_contents = readmee.open().read()
+            rewrittene = index_re.sub(index_txt, readmee_contents)
+            rewrittene = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewrittene)
+            readmee.open("w").write(rewrittene)
         
         index.append(
             f"* [{row['title']}]({url}) - {date}"
