@@ -12,7 +12,7 @@ Today-I-Learned snippets. Inspired by the post [Building a self-updating profile
 * [Disable all extensions](https://coding4hours.github.io/Til/Extensions/Disable_all_extensions) - 2024-07-07
 * [Fetch all Extension Info](https://coding4hours.github.io/Til/Extensions/Fetch_Extension_Info) - 2024-07-07
 * [Extension Manager](https://coding4hours.github.io/Til/Extensions/Extension_Manager) - 2024-07-07
-* [This is python stuff](https://coding4hours.github.io/Til/Extensions/index) - 2024-07-13
+* [This is extension stuff](https://coding4hours.github.io/Til/Extensions/index) - 2024-07-13
 
 ## python
 
