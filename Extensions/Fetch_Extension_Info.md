@@ -1,3 +1,7 @@
+---
+layout: default
+title: Python
+---
 Fetch all Extension Info
 ```js
 chrome.management.getAll(function(extensions) {
