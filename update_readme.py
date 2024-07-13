@@ -42,3 +42,5 @@ rewritten = index_re.sub(index_txt, readme_contents)
 rewritten = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewritten)
 print(rewritten)
 readme.open("w").write(rewritten)    
+readme = root / "index.md"
+readme.open("w").write(rewritten)    
