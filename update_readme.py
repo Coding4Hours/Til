@@ -28,19 +28,6 @@ for topic, rows in by_topic.items():
         url = "https://" + urllib.parse.quote(row['url'].replace("https://", ""))
         path = row['url'].replace("https://github.com/Coding4Hours/Til/tree/master/", "") 
         
-        # Parse the URL
-        parsed_url = urlparse(url)
-        path = parsed_url.path
-        
-        directory_path = os.path.dirname(path).split('/')[-1]
-        file_name = os.path.basename(path)
-        
-        with open(f"{directory_path}/index.md", "w") as file:
-            file.write("---\nlayout: default\ntitle: Python\n---\nThis is python stuff")
-        if file_name != "index.md":
-            with open(f"{directory_path}/index.md", "a") as file:
-                file.write(f"\n<br>* [{row['title']}](https://coding4hours.github.io/Til/{directory_path}/{file_name}) - {date}")
-
         if row['title'] == '---':
             pass
         index.append(
