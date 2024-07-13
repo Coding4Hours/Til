@@ -49,3 +49,23 @@ def test():
 x = test()
 print(x)    #
 ```
+
+## Dunder methods
+```python
+class Dog:
+  # defines how attributes are assigned to dog
+  def __init__(self, name, age):
+    self.name, self.age = name, age
+
+  # defines what is returned when we str(dog)
+  def __str__(self):
+    return 'Dog!'
+
+  # defines what is returned when we dog + something
+  def __add__(self, something):
+    return 'Dog ' + str(something)
+
+  # defines what is returned when we dog[something]
+  def __getitem__(self, something):
+    return 123
+```
