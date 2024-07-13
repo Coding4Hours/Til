@@ -29,7 +29,7 @@ for topic, rows in by_topic.items():
         path = row['url'].replace("https://github.com/Coding4Hours/Til/tree/master/", "") 
         
         if row['title'] == '---':
-            pass
+            continue
         index.append(
             f"* [{row['title']}]({url}) - {date}"
         )
