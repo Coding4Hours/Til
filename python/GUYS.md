@@ -1,3 +1,7 @@
+---
+layout: default
+title: Python
+---
 # GUYS!!
 
 ## MAKE FUNCTIONS LIKE THIS!!!!
