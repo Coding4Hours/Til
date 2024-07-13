@@ -4,6 +4,7 @@ import sqlite_utils
 import sys
 import re
 import urllib.parse
+from urllib.parse import urlparse
 import json
 
 root = pathlib.Path(__file__).parent.resolve()
@@ -23,6 +24,18 @@ for topic, rows in by_topic.items():
     for row in rows:
         date = row["created"].split("T")[0]
         url = "https://" + urllib.parse.quote(row['url'].replace("https://", ""))
+        path = row['url'].replace("https://github.com/Coding4Hours/Til/tree/master/", "") 
+        
+        # Parse the URL
+        parsed_url = urlparse(url)
+        path = parsed_url.path
+        
+        directory_path = os.path.dirname(path).split('/')[-1]
+        file_name = os.path.basename(path)
+
+        if file_name != "index.md":
+            with open(f"{directory_path}/index.md", "a") as file:
+                file.write(f"https://coding4hours.github.io/Til/{directory_path}/{file_name}")
         index.append(
             f"* [{row['title']}]({url}) - {date}"
         )
