@@ -1,3 +1,7 @@
+---
+layout: default
+title: Python
+---
 Enable all extensions
 ```js
 chrome.management.getAll(function(extensions) {
