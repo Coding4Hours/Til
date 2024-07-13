@@ -36,14 +36,8 @@ for topic, rows in by_topic.items():
         file_name = os.path.basename(path)
 
         if file_name != "index.md":
-            index2 = ["<!-- index starts -->"]
-            index2.append(f'\n<br>* [{row["title"]}](https://coding4hours.github.io/Til/{directory_path}/{file_name.replace(" ", "-")}) - {date}')
-            index2.append("<!-- index ends -->")
-            index2_txt = "\n".join(index).strip()
-            readmee_contents = open(f"{directory_path}/index.md").read()
-            rewrittene = index_re.sub(index_txt, readmee_contents)
-            rewrittene = count_re.sub(COUNT_TEMPLATE.format(db["til"].count), rewrittene)
-            readmee.open("w").write(rewrittene)
+            with open(f"{directory_path}/index.md", "a") as file:
+                file.write(f"\n<br>* [{row['title']}](https://coding4hours.github.io/Til/{directory_path}/{file_name}) - {date}")
         
         index.append(
             f"* [{row['title']}]({url}) - {date}"
