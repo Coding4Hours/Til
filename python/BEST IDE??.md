@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Python
-permalink: BEST-IDE??
+permalink: /BEST-IDE??
 ---
 ## BEST IDE??
 PyCharm: The Professional’s Choice PyCharm, developed by JetBrains, is a powerful and feature-packed IDE that has become the go-to choice for professional Python developers. Its intelligent code completion, error detection, and refactoring capabilities make it a productivity powerhouse.
