@@ -24,5 +24,5 @@ Today-I-Learned snippets. Inspired by the post [Building a self-updating profile
 
 ## other
 
-* [](https://coding4hours.github.io/Til/other/Check-this-out) - 2024-07-13
+* [[tria.ge](https://tria.ge)](https://coding4hours.github.io/Til/other/Check-this-out) - 2024-07-13
 <!-- index ends -->
