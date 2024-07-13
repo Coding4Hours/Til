@@ -43,7 +43,7 @@ def build_database(repo_path):
             # Read the rest of the file as the body
             body = "".join(lines[5:]).strip()
         path = str(filepath.relative_to(root))
-        url = f"https://coding4hours.github.io/Til/" + urllib.parse.quote(path.replace(" ", "-").replace(".md", ""))
+        url = f"https://coding4hours.github.io/Til/" + path.replace(" ", "-").replace(".md", "")
         record = {
             "path": path.replace("/", "_"),
             "topic": path.split("/")[0],
