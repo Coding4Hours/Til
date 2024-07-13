@@ -2,6 +2,7 @@ from datetime import timezone
 import git
 import pathlib
 import sqlite_utils
+import urllib.parse
 
 root = pathlib.Path(__file__).parent.resolve()
 
@@ -35,7 +36,7 @@ def build_database(repo_path):
             title = fp.readline().lstrip("#").strip()
             body = fp.read().strip()
         path = str(filepath.relative_to(root))
-        url = f"https://coding4hours.github.io/Til/" + path.replace(" ", "-").replace(".md", "")
+        url = f"https://coding4hours.github.io/Til/" + urllib.parse.quote(path.replace(" ", "-").replace(".md", ""))
         record = {
             "path": path.replace("/", "_"),
             "topic": path.split("/")[0],
