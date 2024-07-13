@@ -40,7 +40,9 @@ for topic, rows in by_topic.items():
                 file.write("---\nlayout: default\ntitle: Python\n---\nThis is python stuff")
             with open(f"{directory_path}/index.md", "a") as file:
                 file.write(f"\n<br>* [{row['title']}](https://coding4hours.github.io/Til/{directory_path}/{file_name}) - {date}")
-        
+
+        if row['title'] == '---':
+            pass
         index.append(
             f"* [{row['title']}]({url}) - {date}"
         )
