@@ -39,7 +39,8 @@ for topic, rows in by_topic.items():
             index2 = ["<!-- index starts -->"]
             index2.append(f'\n<br>* [{row["title"]}](https://coding4hours.github.io/Til/{directory_path}/{file_name.replace(" ", "-")}) - {date}')
             index2.append("<!-- index ends -->")
-            readme = Path(f"{directory_path}/index.md")
+            readme = Path(f"{directory_path}").parent.resolve()
+            readme = readme / "index.md"
             index2_txt = "\n".join(index).strip()
             readme_contents = readme.open().read()
             rewritten = index_re.sub(index_txt, readme_contents)
