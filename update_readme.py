@@ -36,7 +36,7 @@ for topic, rows in by_topic.items():
 
         if file_name != "index.md":
             index2 = ["<!-- index starts -->"]
-            index2.append(f"\n<br>* [{row['title']}](https://coding4hours.github.io/Til/{directory_path}/{file_name.replace(" ", "-")}) - {date}")
+            index2.append(f'\n<br>* [{row["title"]}](https://coding4hours.github.io/Til/{directory_path}/{file_name.replace(" ", "-")}) - {date}')
             index2.append("<!-- index ends -->")
             readme = f"{directory_path}/index.md"
             index2_txt = "\n".join(index).strip()
