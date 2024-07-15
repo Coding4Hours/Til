@@ -4,7 +4,7 @@ from difflib import SequenceMatcher
 
 def run_query(query, variables):
     headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}
-    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': variables}, headers=headers)
+    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': variables}, headers=headers, timeout=60)
     if request.status_code == 200:
         return request.json()
     else:
@@ -69,7 +69,7 @@ def detect_duplicates():
         # Add comment to the issue (using REST API as it's simpler for this operation)
         add_comment_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues/{issue_number}/comments"
         headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}
-        response = requests.post(add_comment_url, json={"body": comment}, headers=headers)
+        response = requests.post(add_comment_url, json={"body": comment}, headers=headers, timeout=60)
         
         if response.status_code == 201:
             print(f"Potential duplicates found for issue #{issue_number}. Comment added.")
@@ -78,7 +78,7 @@ def detect_duplicates():
         
         # Add label to the issue
         add_label_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues/{issue_number}/labels"
-        response = requests.post(add_label_url, json={"labels": ["potential-duplicate"]}, headers=headers)
+        response = requests.post(add_label_url, json={"labels": ["potential-duplicate"]}, headers=headers, timeout=60)
         
         if response.status_code == 200:
             print("Label 'potential-duplicate' applied.")
