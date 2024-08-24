@@ -4,7 +4,7 @@ from difflib import SequenceMatcher
 
 def run_query(query, variables):
     headers = {"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}"}
-    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': variables}, headers=headers)
+    request = requests.post('https://api.github.com/graphql', json={'query': query, 'variables': variables}, headers=headers, timeout=60)
     if request.status_code == 200:
         return request.json()
     else:
