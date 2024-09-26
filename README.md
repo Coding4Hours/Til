@@ -24,5 +24,5 @@ Today-I-Learned snippets. Inspired by the post [Building a self-updating profile
 
 ## other
 
-* [[any.run](https://any.run/)](https://coding4hours.github.io/Til/other/Check-this-out) - 2024-07-13
+* [[https://github.com/00xBAD/kali-wordlists](https://github.com/00xBAD/kali-wordlists)](https://coding4hours.github.io/Til/other/Check-this-out) - 2024-07-13
 <!-- index ends -->
